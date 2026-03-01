@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yama Reddy &amp; Vijaylakshmi — 34th Anniversary</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#c9a84c;--gold-light:#e8cc7a;--gold-dark:#8b6914;
+  --cream:#fdf6e3;--deep:#1a0a00;--rose:#c0747a;
+  --baby-blue:#7ab4c0;--soft-green:#8ab87a;--lavender:#a07ac0;
+}
+html,body{width:100%;height:100%;background:var(--deep);overflow:hidden;font-family:'Cormorant Garamond',serif;cursor:none;}
+.cursor{position:fixed;width:12px;height:12px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;}
+.stage{position:relative;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;}
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.particle{position:absolute;background:var(--gold-light);border-radius:50%;opacity:0;animation:float-up var(--dur) var(--delay) infinite ease-in;}
+@keyframes float-up{0%{transform:translateY(100vh) translateX(0) scale(0);opacity:0;}10%{opacity:.8;}90%{opacity:.4;}100%{transform:translateY(-20px) translateX(var(--drift)) scale(1);opacity:0;}}
+.scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .8s ease;}
+.scene.active{opacity:1;pointer-events:all;}
+
+/* ── INTRO ── */
+#s1{background:radial-gradient(ellipse at center,#2d1200 0%,#0d0500 70%,#000 100%);}
+.ring-outer{position:absolute;width:500px;height:500px;border:1px solid rgba(201,168,76,.2);border-radius:50%;animation:rslow 20s linear infinite;}
+.ring-mid{position:absolute;width:380px;height:380px;border:1px solid rgba(201,168,76,.15);border-radius:50%;animation:rslow 15s linear infinite reverse;}
+.ring-inner{position:absolute;width:260px;height:260px;border:1px solid rgba(201,168,76,.25);border-radius:50%;animation:rslow 10s linear infinite;}
+@keyframes rslow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.ring-outer::before,.ring-outer::after,.ring-mid::before,.ring-mid::after{content:'✦';position:absolute;color:var(--gold);font-size:14px;}
+.ring-outer::before{top:-8px;left:50%;transform:translateX(-50%);}
+.ring-outer::after{bottom:-8px;left:50%;transform:translateX(-50%);}
+.ring-mid::before{top:-7px;left:50%;transform:translateX(-50%);}
+.ring-mid::after{bottom:-7px;left:50%;transform:translateX(-50%);}
+.s1c{position:relative;z-index:2;text-align:center;}
+.s1-num{font-family:'Playfair Display',serif;font-size:clamp(80px,14vw,160px);font-weight:700;background:linear-gradient(135deg,var(--gold-dark),var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:.9;opacity:0;transform:scale(.5);filter:blur(20px);transition:all 1.4s cubic-bezier(.16,1,.3,1);}
+.s1-num.reveal{opacity:1;transform:scale(1);filter:blur(0);}
+.s1-lbl{font-size:clamp(13px,2.5vw,24px);font-weight:300;letter-spacing:.5em;color:var(--gold-light);text-transform:uppercase;margin-top:10px;opacity:0;transform:translateY(20px);transition:all 1s ease .8s;}
+.s1-lbl.reveal{opacity:.9;transform:translateY(0);}
+.s1-sub{font-style:italic;font-size:clamp(12px,1.8vw,18px);color:rgba(201,168,76,.6);letter-spacing:.2em;margin-top:6px;opacity:0;transform:translateY(20px);transition:all 1s ease 1.2s;}
+.s1-sub.reveal{opacity:1;transform:translateY(0);}
+
+/* ── MILESTONE LAYOUT ── */
+/* Layout: left=photo, right=text+illustration OR full-width for carousel */
+.mscene{display:flex;flex-direction:row;align-items:center;gap:24px;max-width:1100px;width:97%;z-index:2;padding:10px;}
+.mscene.wide{flex-direction:column;max-width:700px;}
+.mscene.wide .mright{align-items:center;text-align:center;}
+.mleft{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.mright{flex:1;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:10px;}
+
+/* ── PLACEHOLDER IMAGE ── */
+.photo-placeholder{
+  position:relative;
+  width:280px;height:400px;
+  border-radius:12px;
+  border:2px solid rgba(201,168,76,.4);
+  overflow:hidden;
+  background:linear-gradient(145deg,#1a0d05,#2a1508);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 0 30px rgba(201,168,76,.2), inset 0 0 40px rgba(0,0,0,.5);
+  opacity:0;transform:scale(.8) translateX(-20px);transition:all 1s cubic-bezier(.34,1.2,.64,1) .3s;
+}
+.photo-placeholder.reveal{opacity:1;transform:scale(1) translateX(0);}
+.photo-placeholder::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(201,168,76,.08) 0%,transparent 60%);
+  pointer-events:none;z-index:2;
+}
+.photo-placeholder .ph-icon{font-size:38px;filter:drop-shadow(0 0 10px rgba(201,168,76,.5));}
+.photo-placeholder .ph-label{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.6);text-align:center;padding:0 12px;}
+.photo-placeholder .ph-frame{position:absolute;inset:8px;border:1px dashed rgba(201,168,76,.2);border-radius:8px;pointer-events:none;z-index:3;}
+/* corner ornaments */
+.photo-placeholder .corner{position:absolute;width:16px;height:16px;border-color:rgba(201,168,76,.5);border-style:solid;z-index:3;}
+.photo-placeholder .corner.tl{top:6px;left:6px;border-width:2px 0 0 2px;}
+.photo-placeholder .corner.tr{top:6px;right:6px;border-width:2px 2px 0 0;}
+.photo-placeholder .corner.bl{bottom:6px;left:6px;border-width:0 0 2px 2px;}
+.photo-placeholder .corner.br{bottom:6px;right:6px;border-width:0 2px 2px 0;}
+/* static photo — fill in src path below each placeholder in the HTML */
+.photo-placeholder .ph-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:1;display:none;
+}
+.photo-placeholder .ph-img[src]:not([src=""]) { display:block; }
+.photo-placeholder:has(.ph-img[src]:not([src=""])) .ph-icon,
+.photo-placeholder:has(.ph-img[src]:not([src=""])) .ph-label,
+.photo-placeholder:has(.ph-img[src]:not([src=""])) .ph-frame { display:none; }
+.photo-placeholder:has(.ph-img[src]:not([src=""])){
+  border-color:rgba(201,168,76,.8);
+  box-shadow:0 0 40px rgba(201,168,76,.35);
+}
+
+/* ── WEDDING CAROUSEL ── */
+.carousel-wrap{
+  position:relative;width:520px;height:420px;
+  border-radius:14px;overflow:hidden;
+  border:2px solid rgba(201,168,76,.45);
+  box-shadow:0 0 40px rgba(201,168,76,.25);
+  opacity:0;transform:scale(.85);transition:all 1s cubic-bezier(.34,1.2,.64,1) .2s;
+  flex-shrink:0;
+}
+.carousel-wrap.reveal{opacity:1;transform:scale(1);}
+.carousel-track{display:flex;width:100%;height:100%;transition:transform .7s cubic-bezier(.77,0,.18,1);}
+.carousel-slide{
+  flex:0 0 100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  position:relative;
+}
+.carousel-slide .cs-icon{font-size:42px;filter:drop-shadow(0 0 12px rgba(201,168,76,.6));}
+.carousel-slide .cs-label{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,168,76,.7);text-align:center;padding:0 20px;}
+.carousel-slide .cs-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:rgba(201,168,76,.25);position:absolute;bottom:10px;right:14px;}
+/* Each slide has unique bg */
+.cs-bg-1{background:linear-gradient(145deg,#1a0d05,#2d1408);}
+.cs-bg-2{background:linear-gradient(145deg,#12080a,#280e14);}
+.cs-bg-3{background:linear-gradient(145deg,#0a1008,#141e10);}
+.cs-bg-4{background:linear-gradient(145deg,#080a18,#0e1228);}
+.cs-bg-5{background:linear-gradient(145deg,#180a0a,#2a1010);}
+.cs-bg-6{background:linear-gradient(145deg,#0a0d14,#141a28);}
+.cs-bg-7{background:linear-gradient(145deg,#140808,#241010);}
+.cs-bg-8{background:linear-gradient(145deg,#0d1010,#14201a);}
+/* slide frame */
+.carousel-slide::before{content:'';position:absolute;inset:10px;border:1px dashed rgba(201,168,76,.18);border-radius:8px;pointer-events:none;}
+/* corner ornaments */
+.carousel-slide::after{content:'✦';position:absolute;bottom:8px;left:12px;color:rgba(201,168,76,.3);font-size:10px;}
+/* carousel nav dots */
+.car-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:5;}
+.cdot{width:5px;height:5px;border-radius:50%;background:rgba(201,168,76,.3);transition:all .3s;cursor:pointer;}
+.cdot.active{background:var(--gold);transform:scale(1.4);}
+/* prev/next arrows */
+.car-arr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);border:1px solid rgba(201,168,76,.3);color:var(--gold);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;font-size:12px;transition:all .3s;}
+.car-arr:hover{background:rgba(201,168,76,.2);}
+.car-arr.prev{left:8px;}
+.car-arr.next{right:8px;}
+/* upload hint on carousel */
+.car-upload-hint{position:absolute;top:8px;right:8px;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.3);}
+/* static img inside carousel slide */
+.carousel-slide .cs-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:none;}
+.carousel-slide .cs-img[src]:not([src=""]){display:block;}
+.carousel-slide:has(.cs-img[src]:not([src=""])) .cs-icon,
+.carousel-slide:has(.cs-img[src]:not([src=""])) .cs-label,
+.carousel-slide:has(.cs-img[src]:not([src=""])) .cs-num,
+.carousel-slide:has(.cs-img[src]:not([src=""])) .car-upload-hint{display:none;}
+.carousel-slide:has(.cs-img[src]:not([src=""]))::before{z-index:2;border-color:rgba(201,168,76,.3);}
+.carousel-slide:has(.cs-img[src]:not([src=""]))::after{z-index:2;}
+
+/* ── TEXT ELEMENTS (reveal animations) ── */
+.mdate{font-size:clamp(10px,1.5vw,13px);letter-spacing:.55em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(-16px);transition:all .7s ease;}
+.mdate.reveal{opacity:.85;transform:translateY(0);}
+.millus{opacity:0;transform:scale(.6) translateY(20px);transition:all 1s cubic-bezier(.34,1.4,.64,1) .4s;flex-shrink:0;}
+.millus.reveal{opacity:1;transform:scale(1) translateY(0);}
+.mnames{font-family:'Playfair Display',serif;font-size:clamp(18px,3.5vw,38px);letter-spacing:.05em;font-weight:700;color:var(--gold-light);opacity:0;transform:translateY(15px);transition:all .9s ease .5s;}
+.mnames.reveal{opacity:1;transform:translateY(0);}
+.msub{font-size:clamp(12px,1.5vw,17px);font-style:italic;color:rgba(253,246,227,.65);line-height:1.7;opacity:0;transform:translateY(15px);transition:all .9s ease .75s;max-width:420px;}
+.msub.reveal{opacity:1;transform:translateY(0);}
+
+/* ── YEARS GRID ── */
+#s-grid{background:radial-gradient(ellipse at 30% 50%,#2a1a0a 0%,#0a0500 100%);}
+.ygwrap{max-width:740px;width:93%;text-align:center;}
+.ygtitle{font-family:'Playfair Display',serif;font-size:clamp(18px,3vw,34px);font-style:italic;color:var(--gold-light);margin-bottom:20px;opacity:0;transform:translateY(30px);transition:all .8s ease;}
+.ygtitle.reveal{opacity:1;transform:translateY(0);}
+.ygrid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
+.ydot{display:flex;flex-direction:column;align-items:center;gap:2px;opacity:0;transform:scale(0);transition:all .4s cubic-bezier(.34,1.56,.64,1);}
+.ydot.reveal{opacity:1;transform:scale(1);}
+.ycirc{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--deep);font-weight:700;box-shadow:0 0 8px rgba(201,168,76,.3);}
+.ydot.sp-rose .ycirc{background:linear-gradient(135deg,var(--rose),#e89ca2);box-shadow:0 0 16px rgba(192,116,122,.65);width:40px;height:40px;font-size:14px;color:#fff;}
+.ydot.sp-blue .ycirc{background:linear-gradient(135deg,#4a8a96,var(--baby-blue));box-shadow:0 0 16px rgba(122,180,192,.65);width:40px;height:40px;font-size:14px;color:#fff;}
+.ydot.sp-purple .ycirc{background:linear-gradient(135deg,#6a4a90,var(--lavender));box-shadow:0 0 16px rgba(160,122,192,.65);width:40px;height:40px;font-size:14px;color:#fff;}
+.ydot.sp-last .ycirc{background:linear-gradient(135deg,var(--gold),var(--gold-light));box-shadow:0 0 22px rgba(201,168,76,.9);width:44px;height:44px;font-size:11px;}
+.ylabel{font-size:7px;color:rgba(201,168,76,.35);letter-spacing:.02em;}
+
+/* ── HEART ── */
+#s-heart{background:radial-gradient(ellipse at center,#1a0a0f 0%,#080205 100%);}
+.heartwrap{display:flex;flex-direction:column;align-items:center;gap:20px;}
+.hsvg{width:150px;height:150px;opacity:0;transform:scale(.3);transition:all 1.2s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 0 40px rgba(192,116,122,.8));}
+.hsvg.reveal{opacity:1;transform:scale(1);}
+.hpath{fill:var(--rose);animation:hbeat 1.5s ease-in-out infinite;transform-origin:center;}
+@keyframes hbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.1)}28%{transform:scale(1)}42%{transform:scale(1.07)}70%{transform:scale(1)}}
+.hquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(13px,2vw,21px);color:var(--cream);text-align:center;max-width:540px;line-height:1.75;opacity:0;transform:translateY(30px);transition:all 1s ease .5s;}
+.hquote.reveal{opacity:1;transform:translateY(0);}
+.hquote em{color:var(--gold-light);font-style:normal;}
+.hnames{font-size:clamp(11px,1.6vw,17px);letter-spacing:.3em;color:var(--gold);text-transform:uppercase;opacity:0;transform:translateY(20px);transition:all 1s ease 1s;}
+.hnames.reveal{opacity:.8;transform:translateY(0);}
+
+/* ── FINALE ── */
+#s-fin{background:radial-gradient(ellipse at center,#2d1800 0%,#0d0700 100%);}
+.finwrap{text-align:center;position:relative;z-index:2;padding:0 24px;}
+.fcong{font-size:clamp(10px,1.6vw,16px);letter-spacing:.6em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(-20px);transition:all .8s ease;}
+.fcong.reveal{opacity:.8;transform:translateY(0);}
+.fbig{font-family:'Playfair Display',serif;font-size:clamp(26px,6vw,70px);font-weight:700;font-style:italic;background:linear-gradient(135deg,var(--gold-dark),var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin:6px 0;opacity:0;transform:scale(.8);transition:all 1s cubic-bezier(.16,1,.3,1) .3s;}
+.fbig.reveal{opacity:1;transform:scale(1);}
+.fnum{font-family:'Playfair Display',serif;font-size:clamp(55px,10vw,115px);font-weight:700;color:var(--gold-light);line-height:.9;opacity:0;filter:blur(10px);transition:all 1.2s cubic-bezier(.16,1,.3,1) .6s;text-shadow:0 0 80px rgba(201,168,76,.5);}
+.fnum.reveal{opacity:1;filter:blur(0);}
+.fyrs{font-size:clamp(10px,1.6vw,17px);letter-spacing:.5em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(20px);transition:all .8s ease 1s;}
+.fyrs.reveal{opacity:.7;transform:translateY(0);}
+.ffam{font-style:italic;font-size:clamp(9px,1.2vw,14px);color:rgba(253,246,227,.7);margin-top:8px;line-height:1.8;opacity:0;transform:translateY(20px);transition:all .8s ease 1.2s;}
+.ffam.reveal{opacity:1;transform:translateY(0);}
+.fmsg{font-style:italic;font-size:clamp(9px,1.1vw,13px);color:rgba(253,246,227,.4);margin-top:5px;opacity:0;transform:translateY(20px);transition:all .8s ease 1.4s;}
+.fmsg.reveal{opacity:1;transform:translateY(0);}
+
+/* confetti */
+.cp{position:fixed;border-radius:2px;pointer-events:none;animation:cfall var(--d) var(--dl) ease-in both;z-index:10;}
+@keyframes cfall{0%{transform:translateY(-20px) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(var(--sp));opacity:0}}
+
+/* nav */
+.progress{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:100;}
+.pdot{width:6px;height:6px;border-radius:50%;background:rgba(201,168,76,.3);transition:all .3s;cursor:pointer;}
+.pdot.active{background:var(--gold);transform:scale(1.6);}
+.nbtn{position:fixed;bottom:60px;right:34px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(201,168,76,.4);padding:9px 20px;cursor:pointer;z-index:100;transition:all .3s;}
+.nbtn:hover{background:rgba(201,168,76,.1);border-color:var(--gold);}
+.slabel{position:fixed;top:20px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:rgba(201,168,76,.38);z-index:100;white-space:nowrap;}
+.shimmer{width:100px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:8px auto;}
+@keyframes rpulse{0%,100%{filter:drop-shadow(0 0 8px rgba(201,168,76,.6))}50%{filter:drop-shadow(0 0 22px rgba(201,168,76,1))}}
+.rg{animation:rpulse 2s ease-in-out infinite;}
+
+/* ── MUSIC PLAYER ── */
+.music-btn{
+  position:fixed;bottom:60px;left:34px;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(10,5,0,.7);
+  border:1px solid rgba(201,168,76,.45);
+  color:var(--gold);font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:100;
+  transition:all .3s;
+  box-shadow:0 0 20px rgba(201,168,76,.15);
+  backdrop-filter:blur(8px);
+}
+.music-btn:hover{background:rgba(201,168,76,.15);border-color:var(--gold);box-shadow:0 0 28px rgba(201,168,76,.35);}
+.music-btn.playing{animation:music-pulse 2s ease-in-out infinite;}
+@keyframes music-pulse{0%,100%{box-shadow:0 0 20px rgba(201,168,76,.2)}50%{box-shadow:0 0 35px rgba(201,168,76,.55)}}
+
+.music-panel{
+  position:fixed;bottom:115px;left:34px;
+  background:rgba(10,5,0,.92);
+  border:1px solid rgba(201,168,76,.35);
+  border-radius:14px;
+  padding:16px 18px;
+  min-width:230px;
+  z-index:100;
+  backdrop-filter:blur(12px);
+  box-shadow:0 8px 32px rgba(0,0,0,.6);
+  opacity:0;pointer-events:none;
+  transform:translateY(10px) scale(.96);
+  transition:all .3s cubic-bezier(.34,1.3,.64,1);
+}
+.music-panel.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1);}
+.mp-title{font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--gold-light);margin-bottom:12px;text-align:center;letter-spacing:.05em;}
+.mp-track{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,168,76,.7);text-align:center;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;}
+.mp-bars{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:24px;margin-bottom:12px;}
+.mp-bar{width:4px;border-radius:2px;background:var(--gold);animation:bar-dance var(--spd) ease-in-out infinite alternate;opacity:.7;}
+@keyframes bar-dance{0%{height:4px;opacity:.4}100%{height:var(--h);opacity:.9}}
+.mp-controls{display:flex;align-items:center;justify-content:center;gap:10px;}
+.mp-ctl{background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--gold);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;transition:all .2s;}
+.mp-ctl:hover{background:rgba(201,168,76,.15);border-color:var(--gold);}
+.mp-vol{display:flex;align-items:center;gap:8px;margin-top:10px;}
+.mp-vol-icon{font-size:11px;color:rgba(201,168,76,.5);}
+.mp-vol input{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:2px;background:rgba(201,168,76,.2);outline:none;}
+.mp-vol input::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--gold);cursor:pointer;}
+
+/* upload music button */
+.mp-upload-area{
+  margin-top:14px;
+  border-top:1px solid rgba(201,168,76,.15);
+  padding-top:12px;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.mp-upload-btn{
+  display:flex;align-items:center;gap:7px;
+  background:rgba(201,168,76,.08);
+  border:1px dashed rgba(201,168,76,.4);
+  border-radius:8px;
+  padding:8px 14px;
+  color:var(--gold);
+  font-family:'Cormorant Garamond',serif;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  cursor:pointer;width:100%;justify-content:center;
+  transition:all .25s;
+}
+.mp-upload-btn:hover{background:rgba(201,168,76,.16);border-color:var(--gold);}
+.mp-upload-btn input{display:none;}
+.mp-upload-hint{font-size:9px;color:rgba(201,168,76,.35);letter-spacing:.1em;text-align:center;}
+.mp-song-list{margin-top:12px;border-top:1px solid rgba(201,168,76,.15);padding-top:10px;max-height:120px;overflow-y:auto;}
+.mp-song-list::-webkit-scrollbar{width:3px;}
+.mp-song-list::-webkit-scrollbar-thumb{background:rgba(201,168,76,.3);border-radius:2px;}
+.mp-song{font-size:10px;letter-spacing:.06em;color:rgba(201,168,76,.5);padding:5px 6px;border-radius:4px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mp-song:hover{background:rgba(201,168,76,.08);color:rgba(201,168,76,.85);}
+.mp-song.active-song{color:var(--gold-light);background:rgba(201,168,76,.12);}
+.mp-song .dot{flex-shrink:0;width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:0;}
+.mp-song.active-song .dot{opacity:1;animation:blink .8s ease-in-out infinite alternate;}
+.mp-song .del-btn{margin-left:auto;flex-shrink:0;opacity:0;font-size:10px;color:rgba(201,168,76,.4);transition:opacity .2s;padding:0 2px;}
+.mp-song:hover .del-btn{opacity:1;}
+.mp-song .del-btn:hover{color:var(--rose);}
+@keyframes blink{from{opacity:.4}to{opacity:1}}
+.mp-no-music{font-size:10px;color:rgba(201,168,76,.3);text-align:center;padding:8px 0;font-style:italic;letter-spacing:.1em;}
+
+/* highlight pre-assigned photo slots — remove once photos are added */
+
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="particles" id="particles"></div>
+<div class="progress" id="progress"></div>
+<div class="slabel" id="slabel"></div>
+<button class="nbtn" id="nbtn">Continue ✦</button>
+
+<!-- ── MUSIC PLAYER UI ── -->
+<button class="music-btn" id="musicBtn" title="Background Music">♪</button>
+<div class="music-panel" id="musicPanel">
+  <div class="mp-title">♫ Background Music</div>
+  <div class="mp-track" id="mpTrack">Background Music</div>
+  <div class="mp-bars" id="mpBars"></div>
+  <div class="mp-controls">
+    <button class="mp-ctl" id="mpPrev" title="Previous">⏮</button>
+    <button class="mp-ctl" id="mpPlayPause" style="width:36px;height:36px;font-size:14px;">▶</button>
+    <button class="mp-ctl" id="mpNext" title="Next">⏭</button>
+  </div>
+  <div class="mp-vol">
+    <span class="mp-vol-icon">🔈</span>
+    <input type="range" id="mpVol" min="0" max="100" value="70">
+    <span class="mp-vol-icon">🔊</span>
+  </div>
+  <div class="mp-upload-area">
+    <label class="mp-upload-btn">
+      ♫ Add Your Songs
+      <input type="file" id="mpFileInput" accept="audio/*" multiple>
+    </label>
+    <div class="mp-upload-hint">MP3 · WAV · OGG · M4A supported</div>
+  </div>
+  <div class="mp-song-list" id="mpSongList">
+    <div class="mp-no-music">Upload songs to begin ✦</div>
+  </div>
+</div>
+<!-- ════ STATIC SONG — set src path below, it will autoplay on load ════ -->
+<audio id="audioPlayer" src="photo/Aaya Sher.mp3" loop autoplay></audio>
+<!-- Supported: .mp3 .wav .ogg .m4a — place file next to this HTML or in a subfolder -->
+
+
+<div class="stage">
+
+<!-- ══ S1: INTRO ══ -->
+<div class="scene active" id="s1">
+  <div class="ring-outer"></div><div class="ring-mid"></div><div class="ring-inner"></div>
+  <div class="s1c">
+    <div class="s1-num" id="e-s1n">34</div>
+    <div class="shimmer"></div>
+    <div class="s1-lbl" id="e-s1l">Years of Love</div>
+    <div class="s1-sub" id="e-s1s">Yama Reddy &amp; Vijaylakshmi · Since 1992</div>
+  </div>
+</div>
+
+<!-- ══ S2: WEDDING 1992 — CAROUSEL ══ -->
+<div class="scene" id="s2" style="background:radial-gradient(ellipse at center,#1f1008 0%,#0a0605 100%)">
+  <div class="mscene" style="flex-direction:column;max-width:780px;align-items:center;text-align:center;">
+    <div class="mdate" id="e-s2d">1992 · The Wedding of Yama Reddy &amp; Vijaylakshmi</div>
+    <div class="mnames" id="e-s2n" style="font-size:clamp(20px,4vw,42px);">Yama Reddy 💍 Vijaylakshmi</div>
+
+    <!-- CAROUSEL -->
+    <div class="carousel-wrap" id="carouselWrap">
+      <div class="carousel-track" id="carTrack">
+
+        <!-- Slide 1 -->
+        <div class="carousel-slide cs-bg-1">
+          <img class="cs-img" src="photo/photo1.jpeg" alt=""><!-- Wedding Ceremony -->
+          <div class="cs-icon">💍</div>
+          <div class="cs-label">Wedding Ceremony<br><span style="font-size:9px;opacity:.6">Add your wedding photo here</span></div>
+          <div class="cs-num">1</div>
+          <span class="car-upload-hint">📷 PHOTO</span>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-slide cs-bg-2">
+          <img class="cs-img" src="photo/photo2.jpeg" alt=""><!-- The Engagement -->
+          <div class="cs-icon">🌸</div>
+          <div class="cs-label">The Engagement<br><span style="font-size:9px;opacity:.6">Add your engagement photo here</span></div>
+          <div class="cs-num">2</div>
+          <span class="car-upload-hint">📷 PHOTO</span>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-slide cs-bg-3">
+          <img class="cs-img" src="photo/photo3.jpeg" alt=""><!-- Wedding Reception -->
+          <div class="cs-icon">🎊</div>
+          <div class="cs-label">Wedding Reception<br><span style="font-size:9px;opacity:.6">Add your reception photo here</span></div>
+          <div class="cs-num">3</div>
+          <span class="car-upload-hint">📷 PHOTO</span>
+        </div>
+        <!-- Slide 4 -->
+        <div class="carousel-slide cs-bg-4">
+          <img class="cs-img" src="photo/photo4.jpeg" alt=""><!-- Sacred Rituals -->
+          <div class="cs-icon">🙏</div>
+          <div class="cs-label">Sacred Rituals<br><span style="font-size:9px;opacity:.6">Add ceremony photo here</span></div>
+          <div class="cs-num">4</div>
+          <span class="car-upload-hint">📷 PHOTO</span>
+        </div>
+        <!-- Slide 5 -->
+        <div class="carousel-slide cs-bg-5">
+          <img class="cs-img" src="photo/photo5.jpeg" alt=""><!-- Bridal Portrait -->
+          <div class="cs-icon">👰</div>
+          <div class="cs-label">Bridal Portrait<br><span style="font-size:9px;opacity:.6">Add bride's photo here</span></div>
+          <div class="cs-num">5</div>
+          <span class="car-upload-hint">📷 PHOTO</span>
+        </div>
+        <!-- Slide 6 -->
+        <div class="carousel-slide cs-bg-6">
+          <img class="cs-img" src="photo/photo6.jpeg" alt=""><!-- Groom's Portrait -->
+          <div class="cs-icon">🤵</div>
+          <div class="cs-label">Groom's Portrait<br><span style="font-size:9px;opacity:.6">Add groom's photo here</span></div>
+          <div class="cs-num">6</div>
+          <span class="car-upload-hint">📷 PHOTO</span>
+        </div>
+        <!-- Slide 7 -->
+        <div class="carousel-slide cs-bg-7">
+          <img class="cs-img" src="photo/photo7.jpeg" alt=""><!-- Family Together -->
+          <div class="cs-icon">👨‍👩‍👧‍👦</div>
+          <div class="cs-label">Family Together<br><span style="font-size:9px;opacity:.6">Add family photo here</span></div>
+          <div class="cs-num">7</div>
+          <span class="car-upload-hint">📷 PHOTO</span>
+        </div>
+        <!-- Slide 8 -->
+    
+
+      </div>
+      
+      <!-- track -->
+      <button class="car-arr prev" id="carPrev">‹</button>
+      <button class="car-arr next" id="carNext">›</button>
+      <div class="car-dots" id="carDots"></div>
+    </div><!-- carousel-wrap -->
+
+    <div class="msub" id="e-s2s" style="text-align:center;max-width:560px;">On this sacred day in 1992, Yama Reddy and Vijaylakshmi united their hearts, beginning a beautiful lifelong journey together.</div>
+  </div>
+</div>
+
+<!-- ══ S3: SWETHA BORN Nov 6 1992 ══ -->
+<div class="scene" id="s3" style="background:radial-gradient(ellipse at 60% 40%,#0d1a20 0%,#050a0d 100%)">
+  <div class="mscene">
+    <div class="mleft">
+      <div class="photo-placeholder" id="e-s3ph">
+        <!-- Baby Swetha -->
+        <img class="ph-img" src="photo/swetha.jpeg" alt="">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+        <div class="ph-frame"></div>
+        <div class="ph-icon">👶</div>
+        <div class="ph-label">Baby Swetha<br>November 6, 1992</div>
+      </div>
+    </div>
+    <div class="mright">
+      <div class="mdate" id="e-s3d">November 6, 1992 · First Born</div>
+      <svg class="millus" id="e-s3i" width="180" height="155" viewBox="0 0 260 195" style="filter:drop-shadow(0 0 14px rgba(122,180,192,.5))">
+        <circle cx="20" cy="18" r="2" fill="#7ab4c0" opacity=".8"/><circle cx="210" cy="12" r="2" fill="#7ab4c0" opacity=".9"/>
+        <text x="22" y="48" font-size="12" fill="#b0e0e8" opacity=".5">❄</text><text x="228" y="43" font-size="10" fill="#b0e0e8" opacity=".45">❄</text>
+        <text x="65" y="58" font-size="8" fill="#b0e0e8" opacity=".4">❄</text>
+        <path d="M55 158 Q130 170 205 158 L198 118 Q130 133 62 118Z" fill="#5c3a1e" opacity=".9"/>
+        <path d="M55 158 Q130 172 205 158" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".55"/>
+        <line x1="80" y1="120" x2="74" y2="157" stroke="#8b6914" stroke-width="1.5" opacity=".5"/>
+        <line x1="102" y1="124" x2="98" y2="159" stroke="#8b6914" stroke-width="1.5" opacity=".5"/>
+        <line x1="130" y1="126" x2="130" y2="163" stroke="#8b6914" stroke-width="1.5" opacity=".5"/>
+        <line x1="158" y1="124" x2="162" y2="159" stroke="#8b6914" stroke-width="1.5" opacity=".5"/>
+        <line x1="180" y1="120" x2="186" y2="157" stroke="#8b6914" stroke-width="1.5" opacity=".5"/>
+        <path d="M60 118 Q60 102 72 96 Q130 88 188 96 Q200 102 200 118Z" fill="#7a4e28" opacity=".85"/>
+        <rect x="60" y="158" width="9" height="30" rx="2" fill="#5c3a1e"/><rect x="191" y="158" width="9" height="30" rx="2" fill="#5c3a1e"/>
+        <ellipse cx="130" cy="142" rx="56" ry="21" fill="#5a8ead" opacity=".6"/>
+        <ellipse cx="130" cy="140" rx="50" ry="17" fill="#8cc0d8" opacity=".52"/>
+        <text x="108" y="144" font-size="10" fill="#7ab4c0" opacity=".65">★</text><text x="145" y="144" font-size="10" fill="#7ab4c0" opacity=".65">★</text>
+        <circle cx="130" cy="122" r="19" fill="#f0c8a0"/>
+        <path d="M121 107 Q130 101 139 107" stroke="#8b5e3c" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        <path d="M122 121 Q127 124 132 121" stroke="#5c3a1e" stroke-width="1.5" fill="none"/>
+        <path d="M132 121 Q137 124 142 121" stroke="#5c3a1e" stroke-width="1.5" fill="none"/>
+        <circle cx="120" cy="126" r="5.5" fill="#e89ca2" opacity=".4"/><circle cx="140" cy="126" r="5.5" fill="#e89ca2" opacity=".4"/>
+        <ellipse cx="130" cy="107" rx="19" ry="9.5" fill="#7ab4c0" opacity=".9"/>
+        <path d="M111 107 Q130 99 149 107" fill="#5a8ead" opacity=".85"/>
+        <line x1="130" y1="48" x2="130" y2="68" stroke="#c9a84c" stroke-width="1" opacity=".6"/>
+        <line x1="104" y1="62" x2="156" y2="62" stroke="#c9a84c" stroke-width="1" opacity=".6"/>
+        <circle cx="104" cy="81" r="5.5" fill="#c0747a" opacity=".8"/>
+        <polygon points="130,76 125,88 135,88" fill="#c9a84c" opacity=".8"/>
+        <circle cx="156" cy="81" r="5.5" fill="#7ab4c0" opacity=".8"/>
+        <text x="117" y="46" font-size="18" fill="#c0747a" opacity=".6">♥</text>
+      </svg>
+      <div class="mnames" id="e-s3n">Welcome, Swetha 👶</div>
+      <div class="msub" id="e-s3s">On November 6, 1992 — just months after the wedding — little Swetha arrived, blessing Yama Reddy &amp; Vijaylakshmi with their first child.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S4: PRANITHA BORN Jun 7 1995 ══ -->
+<div class="scene" id="s4" style="background:radial-gradient(ellipse at 40% 60%,#0d200f 0%,#050a06 100%)">
+  <div class="mscene">
+    <div class="mleft">
+      <div class="photo-placeholder" id="e-s4ph" style="border-color:rgba(138,184,122,.4);box-shadow:0 0 30px rgba(138,184,122,.15);">
+        <!-- Baby Pranitha -->
+        <img class="ph-img" src="photo/pranitha.jpeg" alt="">
+        <div class="corner tl" style="border-color:rgba(138,184,122,.5)"></div><div class="corner tr" style="border-color:rgba(138,184,122,.5)"></div>
+        <div class="corner bl" style="border-color:rgba(138,184,122,.5)"></div><div class="corner br" style="border-color:rgba(138,184,122,.5)"></div>
+        <div class="ph-frame" style="border-color:rgba(138,184,122,.2)"></div>
+        <div class="ph-icon">🌸</div>
+        <div class="ph-label" style="color:rgba(138,184,122,.7)">Baby Pranitha<br>June 7, 1995</div>
+      </div>
+    </div>
+    <div class="mright">
+      <div class="mdate" id="e-s4d">June 7, 1995 · Second Born</div>
+      <svg class="millus" id="e-s4i" width="180" height="155" viewBox="0 0 270 200" style="filter:drop-shadow(0 0 14px rgba(138,184,122,.4))">
+        <defs><radialGradient id="sg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f5d060"/><stop offset="100%" stop-color="#c9a84c" stop-opacity=".1"/></radialGradient></defs>
+        <circle cx="218" cy="40" r="25" fill="url(#sg)" opacity=".88"/>
+        <line x1="218" y1="7" x2="218" y2="1" stroke="#f5d060" stroke-width="2.5" opacity=".7"/>
+        <line x1="252" y1="40" x2="258" y2="40" stroke="#f5d060" stroke-width="2.5" opacity=".7"/>
+        <ellipse cx="135" cy="188" rx="130" ry="20" fill="#2a4a1e" opacity=".7"/>
+        <circle cx="40" cy="182" r="7" fill="#c0747a" opacity=".8"/><circle cx="40" cy="182" r="3.5" fill="#f5d060" opacity=".9"/>
+        <circle cx="225" cy="182" r="7" fill="#7ab4c0" opacity=".8"/><circle cx="225" cy="182" r="3.5" fill="#f5d060" opacity=".9"/>
+        <text x="168" y="76" font-size="14" fill="#c9a84c" opacity=".65">🦋</text>
+        <path d="M76 148 Q135 163 194 148 L188 107 Q135 123 82 107Z" fill="#5c3a1e" opacity=".88"/>
+        <path d="M80 108 Q80 88 135 81 Q190 88 190 108Z" fill="#8ab87a" opacity=".88"/>
+        <path d="M72 106 Q66 90 69 72 Q75 66 88 68" stroke="#5c3a1e" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <circle cx="86" cy="162" r="18" fill="#3a2810" stroke="#c9a84c" stroke-width="2"/>
+        <circle cx="86" cy="162" r="9" fill="none" stroke="#8b6914" stroke-width="2"/><circle cx="86" cy="162" r="3.5" fill="#c9a84c"/>
+        <circle cx="184" cy="162" r="18" fill="#3a2810" stroke="#c9a84c" stroke-width="2"/>
+        <circle cx="184" cy="162" r="9" fill="none" stroke="#8b6914" stroke-width="2"/><circle cx="184" cy="162" r="3.5" fill="#c9a84c"/>
+        <circle cx="135" cy="110" r="17" fill="#f0c8a0"/>
+        <path d="M128 98 Q135 92 142 98" stroke="#8b5e3c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="128" cy="110" r="2.5" fill="#5c3a1e"/><circle cx="142" cy="110" r="2.5" fill="#5c3a1e"/>
+        <path d="M130 116 Q135 120 140 116" stroke="#c0747a" stroke-width="1.5" fill="none"/>
+        <ellipse cx="135" cy="97" rx="18" ry="8" fill="#8ab87a" opacity=".95"/>
+      </svg>
+      <div class="mnames" id="e-s4n">Welcome, Pranitha 🌸</div>
+      <div class="msub" id="e-s4s">On June 7, 1995, a summer blessing arrived — Pranitha brought more joy and laughter to the family of four.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S5: GIRISH BORN Mar 9 1997 ══ -->
+<div class="scene" id="s5" style="background:radial-gradient(ellipse at 50% 30%,#1a0f20 0%,#080510 100%)">
+  <div class="mscene">
+    <div class="mleft">
+      <div class="photo-placeholder" id="e-s5ph" style="border-color:rgba(192,116,122,.4);box-shadow:0 0 30px rgba(192,116,122,.15);">
+        <!-- Baby Girish -->
+        <img class="ph-img" src="photo/girish.jpeg" alt="">
+        <div class="corner tl" style="border-color:rgba(192,116,122,.5)"></div><div class="corner tr" style="border-color:rgba(192,116,122,.5)"></div>
+        <div class="corner bl" style="border-color:rgba(192,116,122,.5)"></div><div class="corner br" style="border-color:rgba(192,116,122,.5)"></div>
+        <div class="ph-frame" style="border-color:rgba(192,116,122,.2)"></div>
+        <div class="ph-icon">🌷</div>
+        <div class="ph-label" style="color:rgba(192,116,122,.8)">Baby Girish<br>March 9, 1997</div>
+      </div>
+    </div>
+    <div class="mright">
+      <div class="mdate" id="e-s5d">March 9, 1997 · Third Born</div>
+      <svg class="millus" id="e-s5i" width="180" height="150" viewBox="0 0 280 200" style="filter:drop-shadow(0 0 14px rgba(192,116,122,.4))">
+        <path d="M15 125 Q140 28 265 125" fill="none" stroke="#c0747a" stroke-width="7" opacity=".1"/>
+        <path d="M20 125 Q140 36 260 125" fill="none" stroke="#c9a84c" stroke-width="5" opacity=".09"/>
+        <circle cx="25" cy="25" r="12" fill="#e89ca2" opacity=".25"/>
+        <circle cx="55" cy="190" r="7" fill="#c0747a" opacity=".72"/><circle cx="55" cy="190" r="3.5" fill="#f5d060" opacity=".9"/>
+        <circle cx="168" cy="191" r="6" fill="#e89ca2" opacity=".72"/>
+        <text x="15" y="90" font-size="13" fill="#c0747a" opacity=".55">🌷</text>
+        <circle cx="190" cy="110" r="19" fill="#d4956a"/>
+        <ellipse cx="190" cy="95" rx="18" ry="9" fill="#4a2810"/>
+        <rect x="177" y="129" width="26" height="36" rx="6" fill="#c0747a" opacity=".82"/>
+        <path d="M177 142 Q160 152 150 163" stroke="#d4956a" stroke-width="8.5" fill="none" stroke-linecap="round"/>
+        <path d="M203 142 Q220 152 225 163" stroke="#d4956a" stroke-width="8.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="188" cy="163" rx="30" ry="21" fill="#e89ca2" opacity=".7"/>
+        <ellipse cx="188" cy="160" rx="25" ry="16" fill="#fce8ec" opacity=".92"/>
+        <circle cx="188" cy="153" r="10.5" fill="#f5d0a0"/>
+        <ellipse cx="188" cy="144" rx="10" ry="5.5" fill="#c0747a" opacity=".9"/>
+        <circle cx="188" cy="140" r="3.2" fill="#e89ca2"/>
+        <circle cx="76" cy="125" r="14" fill="#e8b89a"/>
+        <rect x="69" y="139" width="14" height="24" rx="4" fill="#7ab4c0"/>
+        <circle cx="130" cy="133" r="12.5" fill="#f0c8a0"/>
+        <rect x="124" y="146" width="12" height="21" rx="4" fill="#8ab87a"/>
+        <text x="90" y="102" font-size="14" fill="#c0747a" opacity=".48">♥</text>
+      </svg>
+      <div class="mnames" id="e-s5n">Welcome, Girish 🌷</div>
+      <div class="msub" id="e-s5s">On March 9, 1997, spring brought one more miracle — Girish completed the beautiful family of five. ♥</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S6: SWETHA & HARSHA WEDDING Oct 14 2016 ══ -->
+<div class="scene" id="s6" style="background:radial-gradient(ellipse at center,#200d0d 0%,#0a0505 100%)">
+  <div class="mscene">
+    <div class="mleft">
+      <div class="photo-placeholder" id="e-s6ph" style="border-color:rgba(201,168,76,.5);box-shadow:0 0 30px rgba(201,168,76,.25);height:400px;">
+        <!-- Swetha & Harsha Wedding -->
+        <img class="ph-img" src="photo/swetha-Harsha.jpeg" alt="">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+        <div class="ph-frame"></div>
+        <div class="ph-icon">💍</div>
+        <div class="ph-label">Swetha &amp; Harsha<br>October 14, 2016</div>
+      </div>
+    </div>
+    <div class="mright">
+      <div class="mdate" id="e-s6d">October 14, 2016 · First Child's Wedding</div>
+      <svg class="millus" id="e-s6i" width="170" height="140" viewBox="0 0 290 185">
+        <text x="18" y="38" font-size="18" fill="#c9a84c" opacity=".6">🍂</text>
+        <text x="254" y="35" font-size="16" fill="#c0747a" opacity=".55">🍁</text>
+        <circle cx="133" cy="40" r="13" fill="none" stroke="#c9a84c" stroke-width="3.5" class="rg"/>
+        <circle cx="149" cy="40" r="13" fill="none" stroke="#e8cc7a" stroke-width="3.5" class="rg"/>
+        <circle cx="105" cy="95" r="16" fill="#c4956a"/>
+        <ellipse cx="105" cy="82" rx="15" ry="8" fill="#2d1a0a"/>
+        <circle cx="99" cy="95" r="2.2" fill="#2d1a0a"/><circle cx="111" cy="95" r="2.2" fill="#2d1a0a"/>
+        <path d="M100 101 Q105 106 110 101" stroke="#2d1a0a" stroke-width="1.3" fill="none"/>
+        <rect x="91" y="111" width="28" height="52" rx="5" fill="#2d2040"/>
+        <polygon points="105,111 97,127 105,124" fill="#3a3055"/><polygon points="105,111 113,127 105,124" fill="#3a3055"/>
+        <polygon points="105,115 102,129 105,131 108,129" fill="#c9a84c"/>
+        <rect x="99" y="111" width="12" height="16" rx="2" fill="#f0ece4"/>
+        <circle cx="95" cy="119" r="3.5" fill="#c0747a"/><circle cx="95" cy="119" r="1.8" fill="#e8a0a5"/>
+        <circle cx="180" cy="95" r="15" fill="#e8b89a"/>
+        <ellipse cx="180" cy="83" rx="14" ry="7.5" fill="#5c3a1e"/>
+        <path d="M164 111 Q158 130 150 182 Q169 187 192 182 Q184 130 178 111Z" fill="#c0747a" opacity=".8"/>
+        <rect x="166" y="108" width="28" height="24" rx="6" fill="#e89ca2" opacity=".9"/>
+        <path d="M166 84 Q182 74 198 84 Q193 115 185 128 Q178 115 166 84Z" fill="white" opacity=".82"/>
+        <circle cx="154" cy="138" r="13" fill="#c0747a" opacity=".7"/>
+        <circle cx="148" cy="133" r="9" fill="#e89ca2" opacity=".8"/>
+        <line x1="120" y1="138" x2="152" y2="140" stroke="#d4956a" stroke-width="5" stroke-linecap="round"/>
+        <text x="136" y="68" font-size="16" fill="#c0747a" opacity=".65">♥</text>
+      </svg>
+      <div class="mnames" id="e-s6n">Swetha 💍 Harsha</div>
+      <div class="msub" id="e-s6s">On October 14, 2016, your firstborn Swetha wed Harsha in a beautiful autumn wedding celebration filled with love and joy.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S7: TWINS May 6 2021 ══ -->
+<div class="scene" id="s7" style="background:radial-gradient(ellipse at center,#1a1028 0%,#080510 100%)">
+  <div class="mscene">
+    <div class="mleft" style="flex-direction:row;gap:10px;">
+      <!-- Sanvi -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <div class="photo-placeholder" id="e-s7ph-sanvi" style="width:200px;height:400px;border-color:rgba(192,116,122,.5);box-shadow:0 0 24px rgba(192,116,122,.25);">
+        <!-- Sanvi -->
+        <img class="ph-img" src="photo/sanvi.jpeg" alt="">
+          <div class="corner tl" style="border-color:rgba(192,116,122,.5)"></div><div class="corner tr" style="border-color:rgba(192,116,122,.5)"></div>
+          <div class="corner bl" style="border-color:rgba(192,116,122,.5)"></div><div class="corner br" style="border-color:rgba(192,116,122,.5)"></div>
+          <div class="ph-frame" style="border-color:rgba(192,116,122,.2)"></div>
+          <div class="ph-icon">👧</div>
+          <div class="ph-label" style="color:rgba(192,116,122,.85)">Sanvi<br><span style="font-size:9px;opacity:.7">May 6, 2021</span></div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.2em;color:rgba(192,116,122,.7);text-transform:uppercase;">Sanvi</div>
+      </div>
+      <!-- Sushruth -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <div class="photo-placeholder" id="e-s7ph-sushruth" style="width:200px;height:400px;border-color:rgba(122,180,192,.5);box-shadow:0 0 24px rgba(122,180,192,.25);">
+        <!-- Sushruth -->
+        <img class="ph-img" src="photo/sushruth.jpeg" alt="">
+          <div class="corner tl" style="border-color:rgba(122,180,192,.5)"></div><div class="corner tr" style="border-color:rgba(122,180,192,.5)"></div>
+          <div class="corner bl" style="border-color:rgba(122,180,192,.5)"></div><div class="corner br" style="border-color:rgba(122,180,192,.5)"></div>
+          <div class="ph-frame" style="border-color:rgba(122,180,192,.2)"></div>
+          <div class="ph-icon">👦</div>
+          <div class="ph-label" style="color:rgba(122,180,192,.85)">Sushruth<br><span style="font-size:9px;opacity:.7">May 6, 2021</span></div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.2em;color:rgba(122,180,192,.7);text-transform:uppercase;">Sushruth</div>
+      </div>
+    </div>
+    <div class="mright">
+      <div class="mdate" id="e-s7d">May 6, 2021 · Twin Grandchildren</div>
+      <svg class="millus" id="e-s7i" width="190" height="155" viewBox="0 0 290 190" style="filter:drop-shadow(0 0 16px rgba(160,122,192,.5))">
+        <circle cx="20" cy="18" r="2" fill="#c8a0e8" opacity=".8"/>
+        <circle cx="240" cy="12" r="2" fill="#c8a0e8" opacity=".9"/>
+        <text x="18" y="50" font-size="14" fill="#c0747a" opacity=".55">♥</text>
+        <text x="262" y="48" font-size="12" fill="#a07ac0" opacity=".55">♥</text>
+        <path d="M28 158 Q83 168 138 158 L132 124 Q83 137 34 124Z" fill="#5c3a1e" opacity=".88"/>
+        <path d="M28 158 Q83 170 138 158" stroke="#c0747a" stroke-width="1.5" fill="none" opacity=".55"/>
+        <path d="M33 124 Q33 110 43 105 Q83 98 123 105 Q133 110 133 124Z" fill="#7a4e28" opacity=".82"/>
+        <rect x="32" y="158" width="8" height="26" rx="2" fill="#5c3a1e"/>
+        <rect x="130" y="158" width="8" height="26" rx="2" fill="#5c3a1e"/>
+        <ellipse cx="83" cy="143" rx="47" ry="19" fill="#c0747a" opacity=".55"/>
+        <ellipse cx="83" cy="141" rx="42" ry="15" fill="#f0a0a8" opacity=".5"/>
+        <circle cx="83" cy="122" r="16.5" fill="#f5c8a0"/>
+        <path d="M75 121 Q80 124 85 121" stroke="#5c3a1e" stroke-width="1.5" fill="none"/>
+        <path d="M85 121 Q90 124 95 121" stroke="#5c3a1e" stroke-width="1.5" fill="none"/>
+        <ellipse cx="83" cy="108" rx="16" ry="8" fill="#c0747a" opacity=".88"/>
+        <text x="83" y="186" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" fill="#c0747a" opacity=".85" font-style="italic">Sanvi</text>
+        <path d="M152 158 Q207 168 262 158 L256 124 Q207 137 158 124Z" fill="#5c3a1e" opacity=".88"/>
+        <path d="M152 158 Q207 170 262 158" stroke="#7ab4c0" stroke-width="1.5" fill="none" opacity=".55"/>
+        <path d="M157 124 Q157 110 167 105 Q207 98 247 105 Q257 110 257 124Z" fill="#7a4e28" opacity=".82"/>
+        <rect x="156" y="158" width="8" height="26" rx="2" fill="#5c3a1e"/>
+        <rect x="254" y="158" width="8" height="26" rx="2" fill="#5c3a1e"/>
+        <ellipse cx="207" cy="143" rx="47" ry="19" fill="#5a8ead" opacity=".55"/>
+        <ellipse cx="207" cy="141" rx="42" ry="15" fill="#8cc0d8" opacity=".5"/>
+        <circle cx="207" cy="122" r="16.5" fill="#f5c8a0"/>
+        <path d="M199 121 Q204 124 209 121" stroke="#5c3a1e" stroke-width="1.5" fill="none"/>
+        <path d="M209 121 Q214 124 219 121" stroke="#5c3a1e" stroke-width="1.5" fill="none"/>
+        <ellipse cx="207" cy="108" rx="17" ry="8.5" fill="#7ab4c0" opacity=".9"/>
+        <text x="207" y="186" text-anchor="middle" font-family="Playfair Display,serif" font-size="11" fill="#7ab4c0" opacity=".85" font-style="italic">Sushruth</text>
+        <text x="141" y="142" text-anchor="middle" font-size="16" fill="#a07ac0" opacity=".6">♥</text>
+      </svg>
+      <div class="mnames" id="e-s7n">Sanvi &amp; Sushruth 👶👶</div>
+      <div class="msub" id="e-s7s">On May 6, 2021, Swetha &amp; Harsha welcomed twin blessings — Sanvi &amp; Sushruth — your very first grandchildren! 🎊</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S8: PRANITHA & RAGHU WEDDING Nov 25 2021 ══ -->
+<div class="scene" id="s8" style="background:radial-gradient(ellipse at center,#1a100e 0%,#080504 100%)">
+  <div class="mscene">
+    <div class="mleft">
+      <div class="photo-placeholder" id="e-s8ph" style="border-color:rgba(138,184,122,.4);box-shadow:0 0 30px rgba(138,184,122,.15);height:400px;">
+        <!-- Pranitha & Raghu Wedding -->
+        <img class="ph-img" src="photo/pranitha-raghu.png" alt="">
+        <div class="corner tl" style="border-color:rgba(138,184,122,.5)"></div><div class="corner tr" style="border-color:rgba(138,184,122,.5)"></div>
+        <div class="corner bl" style="border-color:rgba(138,184,122,.5)"></div><div class="corner br" style="border-color:rgba(138,184,122,.5)"></div>
+        <div class="ph-frame" style="border-color:rgba(138,184,122,.2)"></div>
+        <div class="ph-icon">💍</div>
+        <div class="ph-label" style="color:rgba(138,184,122,.8)">Pranitha &amp; Raghu<br>November 25, 2021</div>
+      </div>
+    </div>
+    <div class="mright">
+      <div class="mdate" id="e-s8d">November 25, 2021 · Second Child's Wedding</div>
+      <svg class="millus" id="e-s8i" width="170" height="140" viewBox="0 0 290 185">
+        <circle cx="30" cy="15" r="1.5" fill="#e8cc7a" opacity=".9"/><circle cx="260" cy="13" r="1.5" fill="#e8cc7a" opacity=".8"/>
+        <text x="20" y="42" font-size="10" fill="#b0e0e8" opacity=".5">❄</text>
+        <text x="260" y="40" font-size="10" fill="#b0e0e8" opacity=".45">❄</text>
+        <circle cx="133" cy="40" r="13" fill="none" stroke="#c9a84c" stroke-width="3.5" class="rg"/>
+        <circle cx="149" cy="40" r="13" fill="none" stroke="#e8cc7a" stroke-width="3.5" class="rg"/>
+        <circle cx="102" cy="95" r="16" fill="#c0855a"/>
+        <ellipse cx="102" cy="82" rx="15" ry="8" fill="#1a1008"/>
+        <rect x="88" y="111" width="28" height="52" rx="5" fill="#1a1a2e"/>
+        <polygon points="102,115 99,129 102,131 105,129" fill="#c9a84c"/>
+        <circle cx="182" cy="95" r="15" fill="#e8b89a"/>
+        <ellipse cx="182" cy="83" rx="13" ry="7" fill="#4a2810"/>
+        <path d="M166 112 Q160 132 152 182 Q171 188 195 182 Q187 132 181 112Z" fill="#c9a84c" opacity=".75"/>
+        <rect x="167" y="108" width="28" height="25" rx="6" fill="#e89ca2" opacity=".88"/>
+        <path d="M168 85 Q182 76 198 85 Q192 116 184 130 Q176 116 168 85Z" fill="#e8cc7a" opacity=".6"/>
+        <circle cx="154" cy="140" r="13" fill="#8ab87a" opacity=".7"/>
+        <line x1="118" y1="140" x2="152" y2="142" stroke="#d4956a" stroke-width="5" stroke-linecap="round"/>
+        <text x="134" y="70" font-size="16" fill="#8ab87a" opacity=".65">♥</text>
+      </svg>
+      <div class="mnames" id="e-s8n">Pranitha 💍 Raghu</div>
+      <div class="msub" id="e-s8s">On November 25, 2021, your second-born Pranitha wed Raghu in a joyful winter celebration of love and togetherness.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S9: GIRISH & LAVANYA WEDDING Aug 8 2024 ══ -->
+<div class="scene" id="s9" style="background:radial-gradient(ellipse at center,#101820 0%,#050a0d 100%)">
+  <div class="mscene">
+    <div class="mleft">
+      <div class="photo-placeholder" id="e-s9ph" style="border-color:rgba(122,180,192,.4);box-shadow:0 0 30px rgba(122,180,192,.15);height:400px;">
+        <!-- Girish & Lavanya Wedding -->
+        <img class="ph-img" src="photo/girishlavanya.jpeg" alt="">
+        <div class="corner tl" style="border-color:rgba(122,180,192,.5)"></div><div class="corner tr" style="border-color:rgba(122,180,192,.5)"></div>
+        <div class="corner bl" style="border-color:rgba(122,180,192,.5)"></div><div class="corner br" style="border-color:rgba(122,180,192,.5)"></div>
+        <div class="ph-frame" style="border-color:rgba(122,180,192,.2)"></div>
+        <div class="ph-icon">💍</div>
+        <div class="ph-label" style="color:rgba(122,180,192,.8)">Girish &amp; Lavanya<br>August 8, 2024</div>
+      </div>
+    </div>
+    <div class="mright">
+      <div class="mdate" id="e-s9d">August 8, 2024 · Third Child's Wedding</div>
+      <svg class="millus" id="e-s9i" width="170" height="140" viewBox="0 0 290 185">
+        <defs><radialGradient id="sg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f5d060"/><stop offset="100%" stop-color="#c9a84c" stop-opacity=".1"/></radialGradient></defs>
+        <circle cx="240" cy="30" r="22" fill="url(#sg2)" opacity=".5"/>
+        <text x="18" y="50" font-size="14" fill="#c9a84c" opacity=".55">🌺</text>
+        <text x="258" y="48" font-size="13" fill="#c0747a" opacity=".5">🌸</text>
+        <circle cx="133" cy="42" r="13" fill="none" stroke="#c9a84c" stroke-width="3.5" class="rg"/>
+        <circle cx="149" cy="42" r="13" fill="none" stroke="#e8cc7a" stroke-width="3.5" class="rg"/>
+        <circle cx="102" cy="97" r="16" fill="#c0855a"/>
+        <ellipse cx="102" cy="84" rx="15" ry="8" fill="#2d1a0a"/>
+        <rect x="88" y="113" width="28" height="52" rx="5" fill="#1a2040"/>
+        <polygon points="102,117 99,131 102,133 105,131" fill="#c9a84c"/>
+        <circle cx="183" cy="97" r="15" fill="#e8b89a"/>
+        <ellipse cx="183" cy="85" rx="14" ry="7.5" fill="#3d2010"/>
+        <path d="M167 114 Q161 134 153 183 Q172 188 196 183 Q188 134 182 114Z" fill="#7ab4c0" opacity=".72"/>
+        <rect x="168" y="110" width="28" height="25" rx="6" fill="#b0e0e8" opacity=".85"/>
+        <path d="M169 86 Q183 77 199 86 Q193 117 185 132 Q177 117 169 86Z" fill="white" opacity=".82"/>
+        <circle cx="155" cy="142" r="13" fill="#7ab4c0" opacity=".7"/>
+        <line x1="119" y1="142" x2="153" y2="144" stroke="#d4956a" stroke-width="5" stroke-linecap="round"/>
+        <text x="134" y="72" font-size="16" fill="#7ab4c0" opacity=".65">♥</text>
+      </svg>
+      <div class="mnames" id="e-s9n">Girish 💍 Lavanya</div>
+      <div class="msub" id="e-s9s">On August 8, 2024, Girish wed Lavanya in a beautiful summer celebration — completing all three children's weddings. ✨</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S10: BABY TRISHIKA Sep 2025 ══ -->
+<div class="scene" id="s10" style="background:radial-gradient(ellipse at 50% 30%,#1a0f0a 0%,#080505 100%)">
+  <div class="mscene">
+    <div class="mleft">
+      <div class="photo-placeholder" id="e-s10ph" style="border-color:rgba(201,168,76,.55);box-shadow:0 0 35px rgba(201,168,76,.3);">
+        <!-- Baby Trishika -->
+        <img class="ph-img" src="photo/trishiksa.JPG" alt="">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+        <div class="ph-frame"></div>
+        <div class="ph-icon">✨</div>
+        <div class="ph-label">Baby Trishika<br>September 2025</div>
+      </div>
+    </div>
+    <div class="mright">
+      <div class="mdate" id="e-s10d">September 2025 · New Grandchild</div>
+      <svg class="millus" id="e-s10i" width="175" height="145" viewBox="0 0 270 210" style="filter:drop-shadow(0 0 18px rgba(201,168,76,.45))">
+        <circle cx="22" cy="18" r="2" fill="#e8cc7a" opacity=".85"/>
+        <circle cx="220" cy="14" r="2" fill="#e8cc7a" opacity=".9"/>
+        <text x="18" y="50" font-size="13" fill="#c9a84c" opacity=".5">🍂</text>
+        <ellipse cx="135" cy="105" rx="80" ry="65" fill="#c9a84c" opacity=".04"/>
+        <circle cx="135" cy="92" r="20" fill="#d4956a"/>
+        <ellipse cx="135" cy="76" rx="19" ry="10" fill="#4a2810"/>
+        <rect x="120" y="112" width="30" height="40" rx="6" fill="#c0747a" opacity=".8"/>
+        <path d="M120 125 Q100 136 88 150" stroke="#d4956a" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M150 125 Q170 136 178 150" stroke="#d4956a" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <ellipse cx="133" cy="155" rx="38" ry="26" fill="#e89ca2" opacity=".65"/>
+        <ellipse cx="133" cy="152" rx="32" ry="21" fill="#fce8ec" opacity=".9"/>
+        <circle cx="133" cy="143" r="13" fill="#f5d0a0"/>
+        <path d="M126 132 Q133 127 140 132" stroke="#8b5e3c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M126 142 Q130 145 134 142" stroke="#5c3a1e" stroke-width="1.5" fill="none"/>
+        <path d="M134 142 Q138 145 142 142" stroke="#5c3a1e" stroke-width="1.5" fill="none"/>
+        <circle cx="124" cy="147" r="5.5" fill="#e89ca2" opacity=".45"/>
+        <circle cx="142" cy="147" r="5.5" fill="#e89ca2" opacity=".45"/>
+        <ellipse cx="133" cy="132" rx="13" ry="7" fill="#c9a84c" opacity=".9"/>
+        <path d="M120 132 Q133 125 146 132" fill="#8b6914" opacity=".85"/>
+        <circle cx="133" cy="127" r="4" fill="#8b6914"/>
+        <circle cx="133" cy="127" r="2.2" fill="#e8cc7a"/>
+        <text x="70" y="138" font-size="14" fill="#e8cc7a" opacity=".6">✨</text>
+        <text x="185" y="140" font-size="14" fill="#e8cc7a" opacity=".6">✨</text>
+        <text x="133" y="75" font-size="16" fill="#c9a84c" opacity=".6">♥</text>
+      </svg>
+      <div class="mnames" id="e-s10n">Welcome, Trishika ✨</div>
+      <div class="msub" id="e-s10s">In September 2025, Pranitha &amp; Raghu welcomed baby Trishika — your newest grandchild, a golden blessing. 💛</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S11: YEARS GRID ══ -->
+<div class="scene" id="s-grid">
+  <div class="ygwrap">
+    <div class="ygtitle" id="e-ygt">Yama Reddy &amp; Vijaylakshmi · 34 Beautiful Years</div>
+    <div class="ygrid" id="ygrid"></div>
+  </div>
+</div>
+
+<!-- ══ S12: HEART ══ -->
+<div class="scene" id="s-heart">
+  <div class="heartwrap">
+    <svg class="hsvg" id="e-hsvg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+      <path class="hpath" d="M50 85 C50 85 10 55 10 30 C10 15 20 5 35 5 C42 5 48 8 50 12 C52 8 58 5 65 5 C80 5 90 15 90 30 C90 55 50 85 50 85Z"/>
+    </svg>
+    <div class="hquote" id="e-hq">
+      "Yama Reddy &amp; Vijaylakshmi —<br>
+      two became five, then eight, then more.<br>
+      Every year, every child, every grandchild<br>
+      a new verse in your beautiful love story.<br>
+      — <em>34 magnificent years</em> —"
+    </div>
+    <div class="hnames" id="e-hn">Yama Reddy &amp; Vijaylakshmi · Forever ♥</div>
+  </div>
+</div>
+
+<!-- ══ S13: FINALE ══ -->
+<div class="scene" id="s-fin">
+  <div class="finwrap">
+    <div class="fcong" id="e-fc">Congratulations</div>
+    <div class="fbig" id="e-fb">Yama Reddy &amp; Vijaylakshmi</div>
+    <div class="fnum" id="e-fn">34</div>
+    <div class="fyrs" id="e-fy">Years of Love &amp; Legacy</div>
+    <div class="shimmer"></div>
+    <div class="ffam" id="e-ff">
+      Married 1992 · Swetha (Nov 6, 1992) · Pranitha (Jun 7, 1995) · Girish (Mar 9, 1997)<br>
+      Swetha &amp; Harsha (Oct 2016) · Twins Sanvi &amp; Sushruth (May 2021)<br>
+      Pranitha &amp; Raghu (Nov 2021) · Girish &amp; Lavanya (Aug 2024) · Baby Trishika (Sep 2025) ✨
+    </div>
+    <div class="fmsg" id="e-fm">Happy 34th Anniversary — may your love story continue to inspire for generations. ✦</div>
+  </div>
+</div>
+
+</div><!-- stage -->
+
+<script>
+// cursor
+const cursor=document.getElementById('cursor');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
+
+// particles
+const pe=document.getElementById('particles');
+for(let i=0;i<30;i++){
+  const p=document.createElement('div');p.className='particle';
+  p.style.cssText=`left:${Math.random()*100}%;--dur:${4+Math.random()*8}s;--delay:${Math.random()*8}s;--drift:${(Math.random()-.5)*100}px;width:${2+Math.random()*3}px;height:${2+Math.random()*3}px;`;
+  pe.appendChild(p);
+}
+
+// ── CAROUSEL ──
+const carSlides=document.querySelectorAll('.carousel-slide');
+const carTrack=document.getElementById('carTrack');
+const carDotsEl=document.getElementById('carDots');
+let carIdx=0, carTimer=null;
+const TOTAL_SLIDES=carSlides.length;
+
+// build dots
+for(let i=0;i<TOTAL_SLIDES;i++){
+  const d=document.createElement('div');
+  d.className='cdot'+(i===0?' active':'');
+  d.addEventListener('click',()=>goCarousel(i));
+  carDotsEl.appendChild(d);
+}
+document.getElementById('carPrev').addEventListener('click',()=>goCarousel((carIdx-1+TOTAL_SLIDES)%TOTAL_SLIDES));
+document.getElementById('carNext').addEventListener('click',()=>goCarousel((carIdx+1)%TOTAL_SLIDES));
+
+function goCarousel(n){
+  carIdx=n;
+  carTrack.style.transform=`translateX(-${carIdx*100}%)`;
+  document.querySelectorAll('.cdot').forEach((d,i)=>d.classList.toggle('active',i===carIdx));
+}
+function startCarousel(){carTimer=setInterval(()=>goCarousel((carIdx+1)%TOTAL_SLIDES),3000);}
+function stopCarousel(){clearInterval(carTimer);}
+document.getElementById('carPrev').addEventListener('mouseenter',stopCarousel);
+document.getElementById('carNext').addEventListener('mouseenter',stopCarousel);
+document.getElementById('carPrev').addEventListener('mouseleave',startCarousel);
+document.getElementById('carNext').addEventListener('mouseleave',startCarousel);
+
+// ── SCENES ──
+const SCENES=[
+  {id:'s1',    label:'Our Story'},
+  {id:'s2',    label:'The Wedding · 1992'},
+  {id:'s3',    label:'Swetha Born · Nov 6, 1992'},
+  {id:'s4',    label:'Pranitha Born · Jun 7, 1995'},
+  {id:'s5',    label:'Girish Born · Mar 9, 1997'},
+  {id:'s6',    label:'Swetha & Harsha · Oct 14, 2016'},
+  {id:'s7',    label:'Twins Sanvi & Sushruth · May 6, 2021'},
+  {id:'s8',    label:'Pranitha & Raghu · Nov 25, 2021'},
+  {id:'s9',    label:'Girish & Lavanya · Aug 8, 2024'},
+  {id:'s10',   label:'Baby Trishika · Sep 2025'},
+  {id:'s-grid',label:'34 Years'},
+  {id:'s-heart',label:'With Love'},
+  {id:'s-fin', label:'Celebration'},
+];
+const sceneEls=SCENES.map(s=>document.getElementById(s.id));
+const prog=document.getElementById('progress');
+const slabel=document.getElementById('slabel');
+let cur=0;
+
+SCENES.forEach((_,i)=>{
+  const d=document.createElement('div');d.className='pdot'+(i===0?' active':'');
+  d.addEventListener('click',()=>goTo(i));prog.appendChild(d);
+});
+
+// years grid
+const ygrid=document.getElementById('ygrid');
+const specials={
+  1:{cls:'sp-rose',icon:'💍',lbl:'1992'},
+  2:{cls:'sp-blue',icon:'👶',lbl:'Nov\'92'},   // Swetha Nov 6 1992 = year 1 but let's show year 2 as she's 1993? No — married 1992, Swetha born Nov 1992 so year 1. 
+  4:{cls:'sp-blue',icon:'👶',lbl:'Jun\'95'},
+  6:{cls:'sp-rose',icon:'👶',lbl:'Mar\'97'},
+  25:{cls:'sp-purple',icon:'💍',lbl:'2016'},
+  30:{cls:'sp-rose',icon:'👶👶',lbl:'2021'},
+  33:{cls:'sp-blue',icon:'💍',lbl:'2024'},
+  34:{cls:'sp-purple sp-last',icon:'✨',lbl:'2025'},
+};
+// fix: year 1=1992 (wedding + swetha born), year 4=1995 pranitha, year 6=1997 girish
+for(let y=1;y<=34;y++){
+  const yr=1991+y;
+  const div=document.createElement('div');
+  if(specials[y]){
+    div.className='ydot '+specials[y].cls;
+    div.innerHTML=`<div class="ycirc">${specials[y].icon}</div><div class="ylabel">${specials[y].lbl}</div>`;
+  } else {
+    div.className='ydot';
+    div.innerHTML=`<div class="ycirc">${yr}</div><div class="ylabel">Yr ${y}</div>`;
+  }
+  ygrid.appendChild(div);
+}
+
+const nbtn=document.getElementById('nbtn');
+function goTo(idx){
+  // stop carousel if leaving s2
+  if(cur===1){stopCarousel();}
+  sceneEls[cur].classList.remove('active');
+  prog.children[cur].classList.remove('active');
+  cur=idx;
+  sceneEls[cur].classList.add('active');
+  prog.children[cur].classList.add('active');
+  slabel.textContent=SCENES[cur].label;
+  nbtn.textContent=cur===SCENES.length-1?'Restart ✦':'Continue ✦';
+  if(cur===SCENES.length-1) confetti();
+  // start carousel when arriving at s2
+  if(cur===1){goCarousel(0);startCarousel();}
+  setTimeout(()=>reveal(cur),120);
+}
+
+function rev(id,delay=0){setTimeout(()=>{const e=document.getElementById(id);if(e)e.classList.add('reveal');},delay);}
+
+function reveal(idx){
+  if(idx===0){rev('e-s1n');rev('e-s1l',800);rev('e-s1s',1200);}
+  else if(idx===1){rev('e-s2d');rev('e-s2n',300);document.getElementById('carouselWrap').classList.add('reveal');rev('e-s2s',900);}
+  else if(idx===2){rev('e-s3d');rev('e-s3ph',200);rev('e-s3i',400);rev('e-s3n',700);rev('e-s3s',950);}
+  else if(idx===3){rev('e-s4d');rev('e-s4ph',200);rev('e-s4i',400);rev('e-s4n',700);rev('e-s4s',950);}
+  else if(idx===4){rev('e-s5d');rev('e-s5ph',200);rev('e-s5i',400);rev('e-s5n',700);rev('e-s5s',950);}
+  else if(idx===5){rev('e-s6d');rev('e-s6ph',200);rev('e-s6i',400);rev('e-s6n',700);rev('e-s6s',950);}
+  else if(idx===6){rev('e-s7d');rev('e-s7ph-sanvi',150);rev('e-s7ph-sushruth',300);rev('e-s7i',450);rev('e-s7n',700);rev('e-s7s',950);}
+  else if(idx===7){rev('e-s8d');rev('e-s8ph',200);rev('e-s8i',400);rev('e-s8n',700);rev('e-s8s',950);}
+  else if(idx===8){rev('e-s9d');rev('e-s9ph',200);rev('e-s9i',400);rev('e-s9n',700);rev('e-s9s',950);}
+  else if(idx===9){rev('e-s10d');rev('e-s10ph',200);rev('e-s10i',400);rev('e-s10n',700);rev('e-s10s',950);}
+  else if(idx===10){rev('e-ygt');document.querySelectorAll('.ydot').forEach((d,i)=>setTimeout(()=>d.classList.add('reveal'),300+i*45));}
+  else if(idx===11){rev('e-hsvg');rev('e-hq',500);rev('e-hn',1000);}
+  else if(idx===12){['e-fc','e-fb','e-fn','e-fy','e-ff','e-fm'].forEach((id,i)=>rev(id,i*250));}
+}
+
+function confetti(){
+  const cols=['#c9a84c','#e8cc7a','#c0747a','#fdf6e3','#8ab87a','#7ab4c0','#a07ac0'];
+  for(let i=0;i<120;i++){
+    const c=document.createElement('div');c.className='cp';
+    c.style.cssText=`left:${Math.random()*100}%;top:-10px;background:${cols[Math.floor(Math.random()*cols.length)]};--d:${2+Math.random()*3}s;--dl:${Math.random()*2}s;--sp:${(Math.random()-.5)*720}deg;width:${6+Math.random()*10}px;height:${6+Math.random()*10}px;border-radius:${Math.random()>.5?'50%':'2px'};`;
+    document.body.appendChild(c);setTimeout(()=>c.remove(),6000);
+  }
+}
+
+nbtn.addEventListener('click',()=>goTo(cur===SCENES.length-1?0:cur+1));
+slabel.textContent=SCENES[0].label;
+setTimeout(()=>reveal(0),300);
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' ')goTo(cur<SCENES.length-1?cur+1:0);
+  if(e.key==='ArrowLeft'&&cur>0)goTo(cur-1);
+});
+
+// ════════════════════════════════════════
+//  MUSIC ENGINE  (File Upload)
+// ════════════════════════════════════════
+let playlist=[], currentSong=0, isPlaying=false;
+const audioPlayer=document.getElementById('audioPlayer');
+const mpTrack=document.getElementById('mpTrack');
+const mpPlayPause=document.getElementById('mpPlayPause');
+const mpSongList=document.getElementById('mpSongList');
+const musicBtn=document.getElementById('musicBtn');
+const musicPanel=document.getElementById('musicPanel');
+
+// ── Static audio autoplay ──
+audioPlayer.volume=0.7;
+if(audioPlayer.src && !audioPlayer.src.endsWith('/')){
+  // Static song is set — update track name from filename
+  const fname=audioPlayer.src.split('/').pop().replace(/\.[^.]+$/,'');
+  mpTrack.textContent=fname||'Background Music';
+  // Autoplay on first user interaction (browser policy)
+  const startAudio=()=>{
+    audioPlayer.play().then(()=>{
+      isPlaying=true;
+      mpPlayPause.textContent='⏸';
+      musicBtn.classList.add('playing');
+      musicBtn.textContent='♫';
+      animateBars(true);
+      document.removeEventListener('click',startAudio);
+      document.removeEventListener('keydown',startAudio);
+    }).catch(()=>{});
+  };
+  document.addEventListener('click',startAudio,{once:true});
+  document.addEventListener('keydown',startAudio,{once:true});
+}
+
+// ── Volume ──
+document.getElementById('mpVol').addEventListener('input',e=>{
+  audioPlayer.volume=e.target.value/100;
+});
+
+// ── Loop / auto-advance ──
+audioPlayer.addEventListener('ended',()=>{
+  if(playlist.length>1){
+    currentSong=(currentSong+1)%playlist.length;
+    loadAndPlay(currentSong);
+  } else {
+    // single song: loop it
+    audioPlayer.currentTime=0;
+    audioPlayer.play();
+  }
+});
+
+function loadAndPlay(idx){
+  if(!playlist.length) return;
+  const song=playlist[idx];
+  audioPlayer.src=song.url;
+  audioPlayer.loop=(playlist.length===1);
+  audioPlayer.play().then(()=>{
+    isPlaying=true;
+    mpPlayPause.textContent='⏸';
+    musicBtn.classList.add('playing');
+    musicBtn.textContent='♫';
+    animateBars(true);
+  }).catch(()=>{});
+  mpTrack.textContent=song.name;
+  updateSongList();
+}
+
+function updateSongList(){
+  mpSongList.innerHTML='';
+  if(!playlist.length){
+    mpSongList.innerHTML='<div class="mp-no-music">Upload songs to begin ✦</div>';
+    return;
+  }
+  playlist.forEach((s,i)=>{
+    const div=document.createElement('div');
+    div.className='mp-song'+(i===currentSong?' active-song':'');
+    div.innerHTML=`<span class="dot"></span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;">${s.name}</span><span class="del-btn" data-i="${i}">✕</span>`;
+    div.addEventListener('click',(e)=>{
+      if(e.target.classList.contains('del-btn')) return;
+      currentSong=i;
+      loadAndPlay(currentSong);
+    });
+    div.querySelector('.del-btn').addEventListener('click',(e)=>{
+      e.stopPropagation();
+      removeSong(i);
+    });
+    mpSongList.appendChild(div);
+  });
+}
+
+function removeSong(idx){
+  URL.revokeObjectURL(playlist[idx].url);
+  playlist.splice(idx,1);
+  if(!playlist.length){
+    audioPlayer.pause();
+    audioPlayer.src='';
+    isPlaying=false;
+    mpPlayPause.textContent='▶';
+    musicBtn.classList.remove('playing');
+    musicBtn.textContent='♪';
+    mpTrack.textContent='No music loaded';
+    animateBars(false);
+    updateSongList();
+    return;
+  }
+  if(currentSong>=playlist.length) currentSong=0;
+  if(isPlaying) loadAndPlay(currentSong);
+  else updateSongList();
+}
+
+// ── File upload ──
+document.getElementById('mpFileInput').addEventListener('change',e=>{
+  const files=Array.from(e.target.files);
+  files.forEach(f=>{
+    playlist.push({name:f.name.replace(/\.[^.]+$/,''), url:URL.createObjectURL(f)});
+  });
+  e.target.value='';
+  updateSongList();
+  if(!isPlaying && playlist.length){
+    // Auto-play first uploaded song
+    currentSong=playlist.length-files.length;
+    loadAndPlay(currentSong);
+  }
+});
+
+// ── Controls ──
+function togglePlay(){
+  if(!playlist.length){
+    musicPanel.classList.add('open');
+    return;
+  }
+  if(isPlaying){
+    audioPlayer.pause();
+    isPlaying=false;
+    mpPlayPause.textContent='▶';
+    musicBtn.classList.remove('playing');
+    musicBtn.textContent='♪';
+    animateBars(false);
+  } else {
+    audioPlayer.play().then(()=>{
+      isPlaying=true;
+      mpPlayPause.textContent='⏸';
+      musicBtn.classList.add('playing');
+      musicBtn.textContent='♫';
+      animateBars(true);
+    }).catch(()=>{
+      loadAndPlay(currentSong);
+    });
+  }
+}
+
+mpPlayPause.addEventListener('click',togglePlay);
+
+document.getElementById('mpPrev').addEventListener('click',()=>{
+  if(!playlist.length) return;
+  currentSong=(currentSong-1+playlist.length)%playlist.length;
+  loadAndPlay(currentSong);
+});
+document.getElementById('mpNext').addEventListener('click',()=>{
+  if(!playlist.length) return;
+  currentSong=(currentSong+1)%playlist.length;
+  loadAndPlay(currentSong);
+});
+
+// ── Visualizer bars ──
+const barHeights=[8,14,20,16,24,18,12,22,16,10];
+const barSpeeds=[0.6,0.8,1,0.7,1.1,0.9,0.65,1.2,0.75,0.85];
+const barsEl=document.getElementById('mpBars');
+barHeights.forEach((h,i)=>{
+  const b=document.createElement('div');
+  b.className='mp-bar';
+  b.style.cssText=`--h:${h}px;--spd:${barSpeeds[i]}s;height:4px;animation-play-state:paused;`;
+  barsEl.appendChild(b);
+});
+function animateBars(play){
+  document.querySelectorAll('.mp-bar').forEach(b=>{
+    b.style.animationPlayState=play?'running':'paused';
+    if(!play) b.style.height='4px';
+  });
+}
+
+// ── Toggle panel ──
+musicBtn.addEventListener('click',()=>{
+  musicPanel.classList.toggle('open');
+});
+
+// Close panel on outside click
+document.addEventListener('click',e=>{
+  if(!musicBtn.contains(e.target)&&!musicPanel.contains(e.target)){
+    musicPanel.classList.remove('open');
+  }
+});
+
+// ════════════════════════════════════════
+//  PHOTOS: static src — edit in HTML above
+// ════════════════════════════════════════
+// No JS needed. Just set src="" on each <img class="ph-img"> tag.
+
+</script>
+</body>
+</html>
